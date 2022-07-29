@@ -17,7 +17,7 @@
       <td>{{ m.id }}</td>
       <td>{{ m.name }}</td>
       <td>
-        <input type="checkbox" [checked]="m.haveWatched == true" />
+        <input type="checkbox" [(ngModel)]="m.haveWatched" [checked]="m.haveWatched" (change)="updateWatched(m)" />
       </td>
     </tr>
   </tbody>

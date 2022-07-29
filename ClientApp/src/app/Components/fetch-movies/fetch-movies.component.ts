@@ -23,4 +23,10 @@ export class FetchMoviesComponent implements OnInit {
     this.movieService.getMovies().subscribe(data => this.movies = data.sort((a,b) => a.id - b.id));
   }
 
+  updateWatched(m: Movie) {
+    this.movieService.updateMovie(m).subscribe();
+
+    this.movies = this.movies.sort((a,b) => a.id - b.id);
+  }
+
 }
