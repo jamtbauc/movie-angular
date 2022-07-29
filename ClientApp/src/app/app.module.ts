@@ -7,7 +7,6 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './Components/nav-menu/nav-menu.component';
 import { HomeComponent } from './Components/home/home.component';
-import { CounterComponent } from './Components/counter/counter.component';
 import { FetchMoviesComponent } from './Components/fetch-movies/fetch-movies.component';
 
 @NgModule({
@@ -15,7 +14,6 @@ import { FetchMoviesComponent } from './Components/fetch-movies/fetch-movies.com
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
     FetchMoviesComponent
   ],
   imports: [
@@ -24,7 +22,6 @@ import { FetchMoviesComponent } from './Components/fetch-movies/fetch-movies.com
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
       { path: 'fetch-movies', component: FetchMoviesComponent }
     ])
   ],
