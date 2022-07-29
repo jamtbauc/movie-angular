@@ -1,23 +1,26 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { Movie } from 'src/app/Interfaces/movie';
+import { MovieService } from 'src/app/Services/movie.service';
 
 @Component({
   selector: 'app-fetch-movies',
   templateUrl: './fetch-movies.component.html',
   styleUrls: ['./fetch-movies.component.css']
 })
-export class FetchMoviesComponent {
+export class FetchMoviesComponent implements OnInit {
   public movies: Movie[] = [];
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.get<Movie[]>(baseUrl + 'api/movies').subscribe(result => {
-      this.movies = result;
-    }, error => console.error(error));
-  }
-}
+  constructor(
+    private movieService: MovieService
+  ) { }
 
-interface Movie {
-  id: number;
-  name: string;
-  haveWatched: boolean;
+  ngOnInit(): void {
+    this.getMovies();  
+  }
+
+  getMovies() {
+    this.movieService.getMovies().subscribe(data => this.movies = data.sort((a,b) => a.id - b.id));
+  }
+
 }
