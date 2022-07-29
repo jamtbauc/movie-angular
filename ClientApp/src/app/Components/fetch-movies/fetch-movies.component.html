@@ -1,0 +1,24 @@
+<h1 id="tableLabel">Movie List</h1>
+
+<p>This component demonstrates fetching data from the API.</p>
+
+<p *ngIf="!movies"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="movies">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Have Watched</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let m of movies">
+      <td>{{ m.id }}</td>
+      <td>{{ m.name }}</td>
+      <td>
+        <input type="checkbox" [checked]="m.haveWatched == true" />
+      </td>
+    </tr>
+  </tbody>
+</table>
