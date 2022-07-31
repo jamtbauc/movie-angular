@@ -4,6 +4,10 @@
 
 <p *ngIf="!movies"><em>Loading...</em></p>
 
+<div class="container">
+  <button class="btn btn-primary" [routerLink]="['/add-movie']">Add Movie</button>
+</div>
+
 <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="movies">
   <thead>
     <tr>
