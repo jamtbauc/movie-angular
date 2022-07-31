@@ -7,7 +7,7 @@ const PROXY_CONFIG = [
   {
     context: [
       "/api/movies",
-      "/api/movies/{id}"
+      "/api/movies/id"
    ],
     target: target,
     secure: false,
