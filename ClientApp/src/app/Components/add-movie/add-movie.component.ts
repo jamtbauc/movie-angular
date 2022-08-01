@@ -16,21 +16,24 @@ export class AddMovieComponent implements OnInit {
     private movieService: MovieService,
     private router: Router
   ) {
-    this.movieService.getMovies().subscribe(data => this.movies = data.sort((a,b) => a.id - b.id));
+    
   }
 
   ngOnInit(): void {
 
   }
 
-  getNextId() {
+  getMovies(): void {
+    this.movieService.getMovies().subscribe(data => this.movies = data.sort((a,b) => a.id - b.id));
+  }
+  getNextId(): number {
     return this.movieService.getNextId();
   }
 
   onSubmit(): void {
     this.movieService.addMovie(this.movie).subscribe();
 
-    this.movieService.getMovies();
+    this.getMovies();
 
     this.router.navigate(['/fetch-movies']);
   }

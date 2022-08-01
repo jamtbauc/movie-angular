@@ -11,7 +11,7 @@ export class MovieService {
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
-  public nextId = 5;
+  public nextId = 1;
 
   constructor(
     private http: HttpClient,
@@ -24,15 +24,20 @@ export class MovieService {
     return this.http.get<Movie[]>(this.moviesUrl);
   }
 
+  /** PUT: Update movie using id */
+  updateMovie(movie: Movie): Observable<any> {
+    console.log(movie);
+    return this.http.put(this.moviesUrl + "/" + movie.id, movie, this.httpOptions);
+  }
+
   /** POST: Add new movie to the database */
   addMovie(movie: Movie): Observable<Movie> {
     return this.http.post<Movie>(this.moviesUrl, movie, this.httpOptions);
   }
 
-  /** PUT: Update movie using id */
-  updateMovie(movie: Movie): Observable<any> {
-    console.log(movie);
-    return this.http.put(this.moviesUrl + "/" + movie.id, movie, this.httpOptions);
+  /** DELETE: Delete selected movie from database */
+  deleteMovie(movie: Movie): Observable<Movie> {
+    return this.http.delete<Movie>(this.moviesUrl + "/" + movie.id, this.httpOptions);
   }
 
   /** HELPER FUNCTIONS */
