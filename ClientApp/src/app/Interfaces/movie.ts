@@ -1,5 +1,7 @@
-export interface Movie {
-    id: number;
-    name: string;
-    haveWatched: boolean;
+export class Movie {
+    constructor(
+        public id: number,
+        public name: string,
+        public haveWatched: boolean
+    ) { }
 }
