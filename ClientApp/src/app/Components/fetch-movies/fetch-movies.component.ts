@@ -29,7 +29,6 @@ export class FetchMoviesComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    
   }
 
   getMovies(): void {
