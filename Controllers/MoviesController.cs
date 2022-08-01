@@ -24,22 +24,22 @@ namespace MovieAngular.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Movie>>> GetMovie()
         {
-          if (_context.Movie == null)
+          if (_context.Movies == null)
           {
               return NotFound();
           }
-            return await _context.Movie.ToListAsync();
+            return await _context.Movies.ToListAsync();
         }
 
         // GET: api/Movies/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Movie>> GetMovie(int id)
         {
-          if (_context.Movie == null)
+          if (_context.Movies == null)
           {
               return NotFound();
           }
-            var movie = await _context.Movie.FindAsync(id);
+            var movie = await _context.Movies.FindAsync(id);
 
             if (movie == null)
             {
@@ -85,11 +85,11 @@ namespace MovieAngular.Controllers
         [HttpPost]
         public async Task<ActionResult<Movie>> PostMovie(Movie movie)
         {
-          if (_context.Movie == null)
+          if (_context.Movies == null)
           {
               return Problem("Entity set 'MovieContext.Movie'  is null.");
           }
-            _context.Movie.Add(movie);
+            _context.Movies.Add(movie);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetMovie", new { id = movie.Id }, movie);
@@ -99,17 +99,17 @@ namespace MovieAngular.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMovie(int id)
         {
-            if (_context.Movie == null)
+            if (_context.Movies == null)
             {
                 return NotFound();
             }
-            var movie = await _context.Movie.FindAsync(id);
+            var movie = await _context.Movies.FindAsync(id);
             if (movie == null)
             {
                 return NotFound();
             }
 
-            _context.Movie.Remove(movie);
+            _context.Movies.Remove(movie);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -117,7 +117,7 @@ namespace MovieAngular.Controllers
 
         private bool MovieExists(int id)
         {
-            return (_context.Movie?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Movies?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

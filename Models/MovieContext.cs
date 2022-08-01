@@ -13,11 +13,19 @@ namespace MovieAngular.Models
         {
         }
 
-        public DbSet<MovieAngular.Models.Movie> Movie { get; set; } = default!;
+        public DbSet<Movie> Movies { get; set; } = default!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Movie>().ToTable("Movie");
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseNpgsql("Name=ConnectionStrings:MovieContext");
+            }
         }
     }
 }

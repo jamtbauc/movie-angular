@@ -12,13 +12,15 @@ namespace MovieAngular.Models
         {
             using (var context = new MovieContext(sp.GetRequiredService<DbContextOptions<MovieContext>>()))
             {
+                context.Database.EnsureCreated();
+                
                 // If database is not empty then don't seed.
-                if (context.Movie.Any())
+                if (context.Movies.Any())
                 {
                     return;
                 }
 
-                context.Movie.AddRange(
+                context.Movies.AddRange(
                     new Movie{
                         Name = "The Dark Knight",
                         HaveWatched = true
