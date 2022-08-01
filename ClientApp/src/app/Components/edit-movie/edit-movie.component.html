@@ -1,0 +1,20 @@
+<div class="container" *ngIf="movie">
+    <div>
+        <h1>Edit Movie</h1>
+
+        <div class="input-group flex-nowrap mb-1">
+            <label for="name" class="input-group-text">Name</label>
+            <input type="text" class="form-control" id="name" [(ngModel)]="movie.name" name="name" placeholder="Enter Movie Name">
+        </div>
+        <div class="form-check mb-2">
+            <input type="checkbox" class="form-check-input" id="haveWatched" [(ngModel)]="movie.haveWatched" name="haveWatched">
+            <label class="form-check-label" for="haveWatched">Have Watched</label>
+        </div>
+        <div>
+            <button type="button" class="btn btn-secondary me-1" (click)="goBack()">Cancel</button>
+            <button type="button" class="btn btn-primary" (click)="save(movie)" [routerLink]="['/fetch-movies']">Save</button>
+        </div>
+    </div>
+
+    {{movie.id}}, {{movie.name}}, {{movie.haveWatched}}
+</div>

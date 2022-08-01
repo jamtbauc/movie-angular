@@ -24,6 +24,11 @@ export class MovieService {
     return this.http.get<Movie[]>(this.moviesUrl);
   }
 
+  /** GET: Fetch a single movie by its ID */
+  getMovie(id: number): Observable<Movie> {
+    return this.http.get<Movie>(this.moviesUrl + "/" + id);
+  }
+
   /** PUT: Update movie using id */
   updateMovie(movie: Movie): Observable<any> {
     return this.http.put(this.moviesUrl + "/" + movie.id, movie, this.httpOptions);

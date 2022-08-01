@@ -28,9 +28,6 @@ export class FetchMoviesComponent implements OnInit {
     }
   }
 
-  ngOnDestroy(): void {
-  }
-
   getMovies(): void {
     this.movieService.getMovies().subscribe(data => this.movies = data.sort((a,b) => a.id - b.id));
   }
