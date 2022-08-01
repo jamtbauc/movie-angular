@@ -1,15 +1,14 @@
-<div class="container">
-    <h1>Add Movie Form</h1>
-    <form (ngSubmit)="onSubmit()" #movieForm="ngForm">
-        <div class="form-group">
-            <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name" [(ngModel)]="movie.name" name="name" placeholder="Enter Movie Name">
-        </div>
-        <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="haveWatched" [(ngModel)]="movie.haveWatched" name="haveWatched">
-            <label for="haveWatched" class="form-label">Have Watched</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-    {{movie.id}}, {{movie.name}}, {{movie.haveWatched}}
-</div>
+<h1>Add Movie Form</h1>
+<form (ngSubmit)="onSubmit()" #movieForm="ngForm">
+    <div class="input-group flex-nowrap mb-1">
+        <label for="name" class="input-group-text">Name</label>
+        <input type="text" class="form-control" id="name" [(ngModel)]="movie.name" name="name" placeholder="Enter Movie Name">
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="haveWatched" [(ngModel)]="movie.haveWatched" name="haveWatched">
+        <label for="haveWatched" class="form-label">Have Watched</label>
+    </div>
+    <button type="button" class="btn btn-secondary me-1" (click)="goBack()">Cancel</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{{movie.id}}, {{movie.name}}, {{movie.haveWatched}}

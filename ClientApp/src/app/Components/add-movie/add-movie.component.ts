@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Location } from '@angular/common';
 import { Movie } from 'src/app/Interfaces/movie';
 import { MovieService } from 'src/app/Services/movie.service';
 import { Router } from '@angular/router';
@@ -8,24 +9,15 @@ import { Router } from '@angular/router';
   templateUrl: './add-movie.component.html',
   styleUrls: ['./add-movie.component.css']
 })
-export class AddMovieComponent implements OnInit {
-  movies: Movie[] = [];
+export class AddMovieComponent {
   movie = new Movie(this.getNextId(), "", false);
 
   constructor(
     private movieService: MovieService,
-    private router: Router
-  ) {
-    
-  }
+    private router: Router,
+    private location: Location
+  ) { }
 
-  ngOnInit(): void {
-
-  }
-
-  getMovies(): void {
-    this.movieService.getMovies().subscribe(data => this.movies = data.sort((a,b) => a.id - b.id));
-  }
   getNextId(): number {
     return this.movieService.getNextId();
   }
@@ -33,9 +25,11 @@ export class AddMovieComponent implements OnInit {
   onSubmit(): void {
     this.movieService.addMovie(this.movie).subscribe();
 
-    this.getMovies();
-
     this.router.navigate(['/fetch-movies']);
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
 }
