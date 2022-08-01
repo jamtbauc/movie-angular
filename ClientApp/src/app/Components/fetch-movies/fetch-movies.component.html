@@ -15,6 +15,7 @@
       <th>Name</th>
       <th>Have Watched</th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -23,6 +24,9 @@
       <td>{{ m.name }}</td>
       <td>
         <input type="checkbox" [(ngModel)]="m.haveWatched" [checked]="m.haveWatched" (change)="updateWatched(m)" />
+      </td>
+      <td>
+        <button class="btn btn-primary">Edit</button>
       </td>
       <td>
         <button class="btn btn-danger" (click)="deleteMovie(m)">Delete</button>

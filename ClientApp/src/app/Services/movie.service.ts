@@ -11,7 +11,7 @@ export class MovieService {
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
-  public nextId = 1;
+  public nextId = 5;
 
   constructor(
     private http: HttpClient,
@@ -26,7 +26,6 @@ export class MovieService {
 
   /** PUT: Update movie using id */
   updateMovie(movie: Movie): Observable<any> {
-    console.log(movie);
     return this.http.put(this.moviesUrl + "/" + movie.id, movie, this.httpOptions);
   }
 

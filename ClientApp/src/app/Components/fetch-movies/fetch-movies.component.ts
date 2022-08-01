@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class FetchMoviesComponent implements OnInit {
   public movies: Movie[] = [];
+  private updated = true;
 
   constructor(
     private movieService: MovieService,
@@ -20,6 +21,17 @@ export class FetchMoviesComponent implements OnInit {
     this.getMovies();  
   }
 
+  ngDoCheck() {
+    if(this.updated) {
+      this.getMovies();
+      this.updated = false;
+    }
+  }
+
+  ngOnDestroy(): void {
+    
+  }
+
   getMovies(): void {
     this.movieService.getMovies().subscribe(data => this.movies = data.sort((a,b) => a.id - b.id));
   }
@@ -27,13 +39,15 @@ export class FetchMoviesComponent implements OnInit {
   updateWatched(m: Movie): void {
     this.movieService.updateMovie(m).subscribe();
 
-    this.movies = this.movies.sort((a,b) => a.id - b.id);
+    this.updated = true;
   }
 
   deleteMovie(m: Movie): void {
+    this.movies = this.movies.filter(movie => movie !== m);
+
     this.movieService.deleteMovie(m).subscribe();
 
-    this.ngOnInit();
+    this.updated = true;
   }
 
 }
