@@ -15,6 +15,9 @@ namespace MovieAngular.Models
 
         public DbSet<MovieAngular.Models.Movie> Movie { get; set; } = default!;
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseNpgsql("Host=localhost;Username=jamtbauc;Password=postgresql");
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Movie>().ToTable("Movie");
+        }
     }
 }
