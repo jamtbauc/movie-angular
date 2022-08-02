@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class NavMenuComponent {
   isExpanded = false;
+  resumeUrl = "/assets/James_T._Baucum_Resume.docx"
 
   collapse() {
     this.isExpanded = false;

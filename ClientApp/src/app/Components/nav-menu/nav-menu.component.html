@@ -1,6 +1,6 @@
 <header>
   <nav
-    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
+    class="navbar navbar-expand-md navbar-toggleable-md navbar-light bg-white border-bottom box-shadow mb-3"
   >
     <div class="container">
       <a class="navbar-brand" [routerLink]="['/']">MovieAngular</a>
@@ -16,7 +16,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div
-        class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
+        class="navbar-collapse collapse d-md-inline-flex justify-content-end"
         [ngClass]="{ show: isExpanded }"
       >
         <ul class="navbar-nav flex-grow">
@@ -26,6 +26,16 @@
             [routerLinkActiveOptions]="{ exact: true }"
           >
             <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="https://www.linkedin.com/in/jamesbaucum/" class="nav-link" target="_blank">
+              LinkedIn
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/assets/James T. Baucum Resume.docx" class="nav-link" target="_blank">
+              Resume
+            </a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/fetch-movies']"
